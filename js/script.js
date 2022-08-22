@@ -328,50 +328,124 @@
 
 
 
-let numberOfFilms,
-    personalMovieDB = {
-        count: numberOfFilms,
-        movies: {},
-        actors: {},
-        geners: [],
-        privat: false
-    };
+// let numberOfFilms,
+//     personalMovieDB = {
+//         count: numberOfFilms,
+//         movies: {},
+//         actors: {},
+//         geners: [],
+//         privat: false
+//     };
 
-function start() {
-    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-        numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?');
-        if (numberOfFilms < 10) {
-            console.log('Мало');
-        } else if (numberOfFilms >= 10 && numberOfFilms < 30){
-            console.log('Нормально');
-        } else if (numberOfFilms >= 30) {
-            console.log('Киноман');
-        } else {
-            console.log('Error');
+// function start() {
+//     while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+//         numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?');
+//         if (numberOfFilms < 10) {
+//             console.log('Мало');
+//         } else if (numberOfFilms >= 10 && numberOfFilms < 30){
+//             console.log('Нормально');
+//         } else if (numberOfFilms >= 30) {
+//             console.log('Киноман');
+//         } else {
+//             console.log('Error');
+//         }
+//     } 
+// }
+// start();
+
+// function showMyDB(hidden) {
+//     if (!hidden) {
+//         console.log(personalMovieDB);
+//     }
+// }
+// showMyDB(personalMovieDB.privat);
+
+// function moviesCount() {
+//     for (let i = 0; i < 2; i++) {
+//         let a = prompt('Один из просмотренный фильмов', ''),
+//             b = prompt('На сколько вы оцениваете этот фильм?','');
+//         (a != null && b != null && a != '' && b != '' && a.length < 50) ? personalMovieDB.movies[a] = b : i--;    
+//     }
+// }
+// moviesCount();
+
+// function writeYourGeners() {
+//     for (let i = 0; i < 3; i++) {
+//         personalMovieDB.geners[i] = prompt(`Ваш любимый жанр номер ${i + 1}`);
+//     }
+// }
+// writeYourGeners();
+
+
+
+function calculateVolumeAndArea(a) {
+    let v,
+        s;
+    if (typeof(a) !== 'number' || a < 0 || !Number.isInteger(a)) {
+        return console.log('Произошла ошибка');
+    } else {
+        v = a * a * a;
+        s = (a * a) * 6;
+    }
+    return console.log(`Объем куба: ${v}, площадь всей поверхности: ${s}`);
+}
+// calculateVolumeAndArea(37);
+
+
+function getCoupeNumber(number) {
+    if (typeof(number) != 'number' || !Number.isInteger(number)) {
+        return console.log('Ошибка. Проверьте правильность введенного номера места');
+    }
+    if (number < 1 || number > 36) {
+        return console.log('Таких мест в вагоне не существует');
+    } 
+    for (let i = 4; i <= 36; i = i + 4) {
+        if (number <= i) {
+            return console.log(i/4);
         }
     } 
 }
-start();
+// getCoupeNumber(7);
 
-function showMyDB(hidden) {
-    if (!hidden) {
-        console.log(personalMovieDB);
-    }
-}
-showMyDB(personalMovieDB.privat);
 
-function moviesCount() {
-    for (let i = 0; i < 2; i++) {
-        let a = prompt('Один из просмотренный фильмов', ''),
-            b = prompt('На сколько вы оцениваете этот фильм?','');
-        (a != null && b != null && a != '' && b != '' && a.length < 50) ? personalMovieDB.movies[a] = b : i--;    
-    }
-}
-moviesCount();
 
-function writeYourGeners() {
-    for (let i = 0; i < 3; i++) {
-        personalMovieDB.geners[i] = prompt(`Ваш любимый жанр номер ${i + 1}`);
+function getTimeFromMinutes(count) {
+    alert ('Не более 600!');
+    if (typeof(count) != 'number' || count < 0 || !Number.isInteger(count) || count > 600) {
+        return console.log('Ошибка, проверьте данные')
     }
+    let minutes = count % 60,
+        hours = Math.floor(count / 60),
+        hoursStr = '';
+
+    switch (hours) {
+        case 0: 
+            hoursStr = 'часов';
+            break;
+        case 1: 
+            hoursStr = 'час';
+            break;
+        case 2:
+        case 3:
+        case 2:
+            hoursStr = 'часа';
+            break;
+        default: 
+            hoursStr = 'часов';
+            break;
+    }
+    return console.log(`${hours} ${hoursStr} и ${minutes} минут`);
 }
-writeYourGeners();
+// getTimeFromMinutes(150);
+
+function findMaxNumber(a, b, c, d) {
+    let arr = [a, b, c, d];
+    for (let i = 0; i < 4; i++) {
+        if (typeof(arr[i]) != 'number' || arr.length < 4){
+            return console.log(0);
+        } 
+    }
+    return console.log(Math.max.apply(null, arr));
+}
+
+findMaxNumber(1, 5, 6.6, 3);
